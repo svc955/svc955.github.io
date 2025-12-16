@@ -12,7 +12,7 @@
 
 const noticeConfig = {
     // 是否启用通知条 / Enable notice bar
-    enabled: true,
+    enabled: false,
 
     // 通知类型 / Notice type
     // 可选值 / Options: 'info', 'warning', 'success', 'error'

@@ -1,0 +1,6 @@
+Atom app will collect and only collect these information: 
+Language,Android Id.
+
+Language is used to show the proper display message and Android is used to anti-fraud. 
+
+We do not collect any other informantion.

@@ -126,6 +126,12 @@ function detectLanguage() {
         return savedLang;
     }
 
+    // Check html lang attribute (for static localized pages)
+    const htmlLang = document.documentElement.lang;
+    if (htmlLang === 'zh-CN' || htmlLang === 'zh') {
+        return 'zh';
+    }
+
     // Detect from browser
     const browserLang = navigator.language || navigator.userLanguage;
 

@@ -17,9 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize smooth scrolling
     initSmoothScroll();
 
-    // Initialize language switch button
-    initLanguageSwitch();
-
     // Initialize animations
     initAnimations();
 });
@@ -37,8 +34,8 @@ function initNoticeBar() {
     // Check if notice should be shown
     if (!config.enabled) return;
 
-    // Get current language
-    const lang = window.i18n ? window.i18n.detectLanguage() : 'en';
+    // Get current language from html tag
+    const lang = document.documentElement.lang === 'zh-CN' ? 'zh' : 'en';
     const message = config.message[lang] || config.message.en;
 
     // Hide if no message
@@ -57,30 +54,6 @@ function initNoticeBar() {
     if (navbar) {
         navbar.classList.add('with-notice');
     }
-}
-
-// Update notice bar message when language changes
-function updateNoticeBarLanguage(lang) {
-    const noticeMessage = document.getElementById('noticeMessage');
-    const noticeBar = document.getElementById('noticeBar');
-
-    if (!noticeMessage || !noticeBar || !window.noticeConfig) return;
-
-    const config = window.noticeConfig;
-
-    // Only update if notice is visible
-    if (noticeBar.style.display !== 'block') return;
-
-    const message = config.message[lang] || config.message.zh;
-    if (message && message.trim() !== '') {
-        noticeMessage.textContent = message;
-    }
-}
-
-// Initialize language based on detection
-function initLanguage() {
-    currentLang = window.i18n.detectLanguage();
-    window.i18n.applyTranslations(currentLang);
 }
 
 // Initialize navbar scroll effect
@@ -122,30 +95,6 @@ function initSmoothScroll() {
     });
 }
 
-// Initialize language switch functionality
-function initLanguageSwitch() {
-    const langSwitch = document.getElementById('langSwitch');
-
-    if (!langSwitch) return;
-
-    langSwitch.addEventListener('click', () => {
-        // Toggle language
-        currentLang = currentLang === 'zh' ? 'en' : 'zh';
-
-        // Apply translations
-        window.i18n.applyTranslations(currentLang);
-
-        // Update notice bar language
-        updateNoticeBarLanguage(currentLang);
-
-        // Add animation effect
-        langSwitch.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-            langSwitch.style.transform = 'scale(1)';
-        }, 150);
-    });
-}
-
 // Initialize scroll animations
 function initAnimations() {
     // Intersection Observer for fade-in animations
@@ -183,17 +132,7 @@ function initAnimations() {
     });
 }
 
-// Add keyboard navigation support
-document.addEventListener('keydown', (e) => {
-    // Alt + L to toggle language
-    if (e.altKey && e.key === 'l') {
-        e.preventDefault();
-        const langSwitch = document.getElementById('langSwitch');
-        if (langSwitch) {
-            langSwitch.click();
-        }
-    }
-});
+
 
 // Handle external links security
 document.addEventListener('DOMContentLoaded', () => {

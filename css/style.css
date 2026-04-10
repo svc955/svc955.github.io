@@ -212,6 +212,10 @@ body {
 }
 
 .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
     padding: var(--spacing-xs) var(--spacing-sm);
     background: var(--gradient-primary);
     color: var(--light-color);

@@ -1,7 +1,7 @@
 // Site configuration - centralized URL management
 window.siteConfig = {
     downloads: {
-        apk: 'https://github.com/svc955/svc955.github.io/releases/download/atom-fusion-1.0.2/atom-fusion-1.0.2.apk',
+        apk: 'https://github.com/svc955/svc955.github.io/releases/download/atom-fusion-1.0.3/atom-fusion-1.0.3.apk',
         googlePlay: 'https://play.google.com/store/apps/details?id=net.lab.flying'
     }
 };
